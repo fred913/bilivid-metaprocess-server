@@ -30,3 +30,11 @@ The server works via HTTP, and provides the following endpoint(s):
 
 - `/api/recog_music_in_bili_video`: Takes three parameters: `video_aid: int, pid: int, target_sec: int`
     - Returns the exact same format as what ACRCloud API does, (for reference)[https://docs.acrcloud.cn/metadata/music.html]
+
+# License
+MIT
+
+# To-do
+
+- [ ] Pre-built Docker image
+- [ ] More advanced features (e.g. video transcription, subtitle extraction, CV-based video analysis, etc.)
