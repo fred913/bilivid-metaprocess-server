@@ -1,0 +1,7 @@
+services:
+  app:
+    build: src
+    ports:
+      - 32345:8000
+    restart: always
+    tty: true

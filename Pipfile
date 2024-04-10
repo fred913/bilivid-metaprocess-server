@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+name = "pip_conf_index_global"
+
+[packages]
+aiohttp = "*"
+asyncio = "*"
+pillow-pil = "*"
+opencv-python = "*"
+python-ffmpeg = "*"
+aria2p = "*"
+pydantic = "*"
+fastapi = "*"
+uvicorn = { extras = ["standard"], version = "*" }
+pyacrcloud = {git = "git+https://github.com/fred913/acrcloud_sdk_python_updated.git#egg=pyacrcloud"}
+
+[dev-packages]
+yapf = "*"
+
+[requires]
+python_version = "3.10"
