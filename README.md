@@ -1,40 +1,46 @@
 # bilivid-metaprocess-server
 
-An agent server for processing bilibili video with some advanced features.
+A server that enhances bilibili video processing with advanced features.
 
 ## Features
 
-- Recognize music from a video using ACRCloud API
+- Music recognition in videos via ACRCloud API
 
-Other features are under development `:-)`
+More features are under development.
 
 ## Installation (Docker)
 
-- Prepare a directory for the application, e.g. `/opt/bilivid-metaprocess-server` (if you want to use a different directory, please modify all the subsequent commands accordingly)
-- Clone the repository to the directory: `git clone https://github.com/fred913/bilivid-metaprocess-server.git /opt/bilivid-metaprocess-server/src`
-- Take the docker-compose.yml file from the repository and place it in the app directory: `cp /opt/bilivid-metaprocess-server/src/docker-compose.yml /opt/bilivid-metaprocess-server`
-- Modify the `docker-compose.yml` file according to your needs, e.g. change the port mapping, or add environment variables.
-- Put your ACRcloud API credentials in the `.env` file (check the `.env.example` file for the format)
-- Start the application: `docker-compose up -d`
-- **Note:** The application currently has some issues, causing it to panic (not providing responses, stuck in a loop, etc.) every few minutes. Since normal responses are given in seconds, it is recommended to restart the application every minute. Here's a shell script for reference (execute it every minute using crontab or similar):
+1. Create a directory for the application, e.g., `/opt/bilivid-metaprocess-server`.
+2. Clone the repository into the directory: `git clone https://github.com/fred913/bilivid-metaprocess-server.git /opt/bilivid-metaprocess-server/src`.
+3. Copy `docker-compose.yml` from the repository to the app directory.
+4. Adjust `docker-compose.yml` as needed. For example, modify port mapping or add environment variables.
+5. Input your ACRcloud API credentials into the `.env` file (refer to `.env.example` for the format).
+6. Launch the application: `docker-compose up -d`.
+7. Due to occasional issues causing the application to panic, it's advised to restart the application every minute. Use a shell script (run it every minute via crontab or similar):
 
 ```
 #!/bin/bash
-cd /opt/bilivid-metaprocess-server  # also, modify this to your app directory
+cd /opt/bilivid-metaprocess-server
 docker-compose restart
 ```
 
 ## Usage
 
-The server works via HTTP, and provides the following endpoint(s):
+The server operates over HTTP and offers the following endpoint:
 
-- `/api/recog_music_in_bili_video`: Takes three parameters: `video_aid: int, pid: int, target_sec: int`
-    - Returns the exact same format as what ACRCloud API does, (for reference)[https://docs.acrcloud.cn/metadata/music.html]
+- `/api/recog_music_in_bili_video`: Accepts three parameters: `video_aid: int, pid: int, target_sec: int`. Returns the same format as the ACRCloud API.
 
-# License
+## License
 MIT
 
 # To-do
 
+- [ ] STT Provider: OpenAI Whisper API
+- [ ] STT Provider: OpenAI Whisper (open-source)
+- [ ] STT Provider: other cloud providers'
+
+- [ ] Recognize music from a video using ACRCloud API
+- [ ] Speech-to-text recognition from a video using STT 
+- [ ] Enhance music recognition by (optinally) removing vocal from the audio signal (by MDX or similar)
+
 - [ ] Pre-built Docker image
-- [ ] More advanced features (e.g. video transcription, subtitle extraction, CV-based video analysis, etc.)
